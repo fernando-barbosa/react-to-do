@@ -20,7 +20,7 @@ export default class Home extends React.Component{
 
     _renderCard = (item) => {
         return (
-            <Card>{item.title}</Card>
+            <Card title={item.title}/>
         );
     }
 
@@ -30,7 +30,6 @@ export default class Home extends React.Component{
     render(){
         return (
             <View>
-
                 <FlatList 
                     style={styles.container}
                     data={this.state.todoList}
