@@ -8,7 +8,7 @@ class Card extends Component {
             <TouchableOpacity style={styles.card}>
                 <Text>{this.props.title}</Text>
                 <TouchableOpacity>
-                    <Icon name="trash" size={30} color="#777" /> 
+                    <Icon name="trash" size={20} color="#777" /> 
                 </TouchableOpacity>
             </TouchableOpacity>
         );
