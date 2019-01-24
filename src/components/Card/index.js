@@ -14,12 +14,12 @@ class Card extends Component {
         );
     }
 }
-
 export default Card;
 
 const styles = StyleSheet.create({
     card: {
-      width: '90%',
+      flex: 1,
+      marginBottom: 15,
       flexDirection: 'row',
       justifyContent: 'space-between',
       backgroundColor: '#F6F5F3',
@@ -27,6 +27,6 @@ const styles = StyleSheet.create({
       shadowOffset:{ width: 0, height: 0 },
       shadowColor: 'black',
       shadowOpacity: 0.2,
-      padding: 20
+      padding: 15
     }
   });
