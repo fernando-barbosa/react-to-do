@@ -81,10 +81,13 @@ export default class Home extends React.Component{
 
     _deleteItem = (key) => {
         var array = [...this.state.todoList];
-        var index = array.indexOf(key.value);
-        array.forEach(() => {
-            array.splice(index, 1);
+        var taskToDelete = null;
+        array.forEach((e) => {
+            if(e.key == key) {
+                taskToDelete = e;
+            }
         });
+        array.splice(array.indexOf(taskToDelete), 1);
         this.setState({todoList: array});
     }
 
