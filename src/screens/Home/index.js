@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text, FlatList, StyleSheet, Button, TouchableHighlight, AsyncStorage } from "react-native";
 import Card from '../../components/Card';
+import FloatingActionButton from '../../components/FloatingActionButton';
 
 export default class Home extends React.Component{
 
@@ -41,12 +42,15 @@ export default class Home extends React.Component{
 
     render(){
         return (
-            <View>
-                <FlatList 
-                    style={styles.container}
-                    data={this.state.todoList}
-                    renderItem={({item}) => this._renderCard(item)}
-                    />
+            <View style={{flex: 1}}>
+                <View>
+                    <FlatList 
+                        style={styles.container}
+                        data={this.state.todoList}
+                        renderItem={({item}) => this._renderCard(item)}
+                        />
+                </View>
+                <FloatingActionButton />
             </View>
         );
     }
