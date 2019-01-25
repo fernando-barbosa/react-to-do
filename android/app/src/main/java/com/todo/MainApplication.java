@@ -3,11 +3,8 @@ package com.todo;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
-<<<<<<< HEAD
 import com.swmansion.gesturehandler.react.RNGestureHandlerPackage;
-=======
 import com.oblador.vectoricons.VectorIconsPackage;
->>>>>>> 1ca1fa46d84992b84cd2cfe2c4ff79bcb737b4ff
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
 import com.facebook.react.shell.MainReactPackage;
@@ -28,11 +25,8 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
-<<<<<<< HEAD
-            new RNGestureHandlerPackage()
-=======
+            new RNGestureHandlerPackage(),
             new VectorIconsPackage()
->>>>>>> 1ca1fa46d84992b84cd2cfe2c4ff79bcb737b4ff
       );
     }
 

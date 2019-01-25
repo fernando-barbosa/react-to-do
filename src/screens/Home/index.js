@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, FlatList, StyleSheet, Button } from "react-native";
+import { View, Text, FlatList, StyleSheet, Button, TouchableHighlight } from "react-native";
 import Card from '../../components/Card';
 
 export default class Home extends React.Component{
@@ -18,15 +18,18 @@ export default class Home extends React.Component{
         }
     }
 
+
     _renderCard = (item) => {
         return (
-            <Card title={item.title}/>
+            <Card title={item.title} key={item.key} goViewDetail={this._goViewDetail}/>
         );
     }
 
-    _goViewDetail = (item) =>{
+    _goViewDetail = (key) =>{
+        debugger;
         this.props.navigation.navigate("Detail");
     }
+
     render(){
         return (
             <View>
@@ -34,7 +37,7 @@ export default class Home extends React.Component{
                     style={styles.container}
                     data={this.state.todoList}
                     renderItem={({item}) => this._renderCard(item)}
-                    onPressItem={(item)=> this._goViewDetail(item)}/>
+                    />
             </View>
         );
     }

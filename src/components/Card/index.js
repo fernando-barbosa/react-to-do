@@ -5,7 +5,8 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 class Card extends Component {
     render() {
         return(
-            <TouchableOpacity style={styles.card}>
+            <TouchableOpacity style={styles.card}
+                onPress={()=> this.props.goViewDetail(this.props.key)}>
                 <Text>{this.props.title}</Text>
                 <TouchableOpacity>
                     <Icon name="trash" size={20} color="#777" /> 
