@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, FlatList, StyleSheet, Button, TouchableHighlight } from "react-native";
+import { View, Text, FlatList, StyleSheet, Button, TouchableHighlight, AsyncStorage } from "react-native";
 import Card from '../../components/Card';
 
 export default class Home extends React.Component{
@@ -10,10 +10,12 @@ export default class Home extends React.Component{
         this.state = {
             todoList:[{
                 key: 1,
-                title: 'Installar Navigation'
+                title: 'Installar Navigation',
+                description: "Your Login components onUpdate method is probably called with an object that cannot be serialized. For example it could contain functions, or maybe circular references"
             },{
                 key: 2,
-                title: 'Configurar Navigation'
+                title: 'Configurar Navigation',
+                description: "or whatever is included in the object that is sent to onUpdate."
             }]
         }
     }
@@ -21,12 +23,19 @@ export default class Home extends React.Component{
 
     _renderCard = (item) => {
         return (
-            <Card title={item.title} key={item.key} goViewDetail={this._goViewDetail}/>
+            <Card title={item.title} itemKey={item.key} goViewDetail={this._goViewDetail}/>
         );
     }
 
     _goViewDetail = (key) =>{
-        debugger;
+        var todo = {};
+        this.state.todoList.forEach(function(item){
+            if(item.key === key){
+                todo = item;
+            }
+        });
+        AsyncStorage.setItem('item', JSON.stringify(todo));
+
         this.props.navigation.navigate("Detail");
     }
 

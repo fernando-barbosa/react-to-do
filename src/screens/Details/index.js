@@ -1,21 +1,40 @@
 import React from 'react';
-import {View, Text, TextInput, Button, StyleSheet} from 'react-native';
+import {View, Text, TextInput, Button, StyleSheet, AsyncStorage} from 'react-native';
 
 export default class Detail extends React.Component{
+
+    constructor(props){
+        super(props);
+
+        this.state ={
+
+        }
+    }
+
+    componentWillMount(){
+        AsyncStorage.getItem('item').then((value) => 
+            this.setState(
+                {
+                    title: JSON.parse(value).title,
+                    description: JSON.parse(value).description
+                })
+            );
+    }
+
     render(){
         return (
             <View style={styles.container}>
                 <Text>Título</Text>
                 <TextInput
                     style={styles.inputTitleMargin}
-                    onChangeText={(text) => this.setState({text})}
-                    />
+                    value={this.state.title || ""}/>
 
                 <Text>Descrição</Text>
                 <TextInput
                     style={styles.inputDescriptionMargin}
-                    multiline='true'
+                    multiline={true}
                     onChangeText={(text) => this.setState({text})}
+                    value={this.state.description || ""}
                     />
 
                 <Button

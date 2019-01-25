@@ -6,7 +6,7 @@ class Card extends Component {
     render() {
         return(
             <TouchableOpacity style={styles.card}
-                onPress={()=> this.props.goViewDetail(this.props.key)}>
+                onPress={()=> this.props.goViewDetail(this.props.itemKey)}>
                 <Text>{this.props.title}</Text>
                 <TouchableOpacity>
                     <Icon name="trash" size={20} color="#777" /> 
