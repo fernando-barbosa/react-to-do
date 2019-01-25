@@ -9,29 +9,31 @@ export default class Home extends React.Component{
         super(props);
 
         this.state = {
-            todoList:[{
-                key: 1,
-                title: 'Installar Navigation',
-                description: "Your Login components onUpdate method is probably called with an object that cannot be serialized. For example it could contain functions, or maybe circular references"
-            },{
-                key: 2,
-                title: 'Configurar Navigation',
-                description: "or whatever is included in the object that is sent to onUpdate."
-            }]
+            todoList:[]
         }
+
+        this.props.navigation.addListener(
+            'willFocus',
+            payload => {
+                this.updateLocalTodoList();
+            }
+          );
     }
 
     _updateTodoListStorage = () =>{
         AsyncStorage.setItem('todoList', JSON.stringify(this.state.todoList));
     }
 
-    componentWillMount(){
-        // AsyncStorage.getItem('todoList').then((value) => 
-        //     this.setState(
-        //         {
-        //             todoList: JSON.parse(value)
-        //         })
-        //     );
+    updateLocalTodoList = () =>{
+        AsyncStorage.getItem('todoList').then((value) => 
+        this.setState(
+            {
+                todoList: JSON.parse(value)
+            })
+        );
+    }
+    componentDidMount(){
+        this.updateLocalTodoList();
     }
 
     _renderCard = (item) => {
@@ -71,7 +73,7 @@ export default class Home extends React.Component{
 
         return (<Text>Lista vazia</Text>);
     }
-    
+
     _newToDoList = () => {
         AsyncStorage.setItem('item', JSON.stringify(''));
         this.props.navigation.navigate("Detail");
@@ -113,4 +115,3 @@ const styles = StyleSheet.create({
       marginBottom: 5,
     },
   });
-//<Button title={"navigate"} onPress={() => this.props.navigation.navigate("Detail")}/>
