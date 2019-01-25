@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text, FlatList, StyleSheet, Button } from "react-native";
-
+import Card from '../../components/Card';
 
 export default class Home extends React.Component{
 
@@ -20,7 +20,7 @@ export default class Home extends React.Component{
 
     _renderCard = (item) => {
         return (
-            <Text>{item.title}</Text>
+            <Card title={item.title}/>
         );
     }
 
@@ -30,8 +30,8 @@ export default class Home extends React.Component{
     render(){
         return (
             <View>
-                
                 <FlatList 
+                    style={styles.container}
                     data={this.state.todoList}
                     renderItem={({item}) => this._renderCard(item)}
                     onPressItem={(item)=> this._goViewDetail(item)}/>
@@ -39,4 +39,20 @@ export default class Home extends React.Component{
         );
     }
 }
+
+const styles = StyleSheet.create({
+    container: {
+      padding: 10
+    },
+    welcome: {
+      fontSize: 20,
+      textAlign: 'center',
+      margin: 10,
+    },
+    instructions: {
+      textAlign: 'center',
+      color: '#333333',
+      marginBottom: 5,
+    },
+  });
 //<Button title={"navigate"} onPress={() => this.props.navigation.navigate("Detail")}/>
