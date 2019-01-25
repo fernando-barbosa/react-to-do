@@ -1,9 +1,5 @@
 import React from 'react';
-<<<<<<< HEAD
-import { View, Text, FlatList, StyleSheet, Button, TouchableHighlight } from "react-native";
-=======
 import { View, FlatList, StyleSheet } from "react-native";
->>>>>>> feature/fab
 import Card from '../../components/Card';
 import FloatingActionButton from '../../components/FloatingActionButton';
 
@@ -37,12 +33,15 @@ export default class Home extends React.Component{
 
     render(){
         return (
-            <View>
-                <FlatList 
-                    style={styles.container}
-                    data={this.state.todoList}
-                    renderItem={({item}) => this._renderCard(item)}
-                    />
+            <View style={{flex: 1}}>
+                <View>
+                    <FlatList 
+                        style={styles.container}
+                        data={this.state.todoList}
+                        renderItem={({item}) => this._renderCard(item)}
+                        />
+                </View>
+                <FloatingActionButton />
             </View>
         );
     }
