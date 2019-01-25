@@ -1,6 +1,7 @@
 import React from 'react';
-import { View, Text, FlatList, StyleSheet, Button } from "react-native";
+import { View, FlatList, StyleSheet } from "react-native";
 import Card from '../../components/Card';
+import FloatingActionButton from '../../components/FloatingActionButton';
 
 export default class Home extends React.Component{
 
@@ -29,12 +30,15 @@ export default class Home extends React.Component{
     }
     render(){
         return (
-            <View>
-                <FlatList 
-                    style={styles.container}
-                    data={this.state.todoList}
-                    renderItem={({item}) => this._renderCard(item)}
-                    onPressItem={(item)=> this._goViewDetail(item)}/>
+            <View  style={{ flex: 1}}>
+                <View>
+                    <FlatList 
+                        style={styles.container}
+                        data={this.state.todoList}
+                        renderItem={({item}) => this._renderCard(item)}
+                        onPressItem={(item)=> this._goViewDetail(item)}/>
+                </View>
+                <FloatingActionButton />
             </View>
         );
     }
