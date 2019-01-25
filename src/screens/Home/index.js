@@ -24,7 +24,12 @@ export default class Home extends React.Component{
 
     _renderCard = (item) => {
         return (
-            <Card title={item.title} itemKey={item.key} goViewDetail={this._goViewDetail}/>
+            <Card 
+                title={item.title} 
+                itemKey={item.key} 
+                goViewDetail={this._goViewDetail}
+                deleteItem={this._deleteItem}
+                />
         );
     }
 
@@ -40,6 +45,20 @@ export default class Home extends React.Component{
         this.props.navigation.navigate("Detail");
     }
 
+    _newToDoList = () => {
+        AsyncStorage.setItem('item', JSON.stringify(''));
+        this.props.navigation.navigate("Detail");
+    }
+
+    _deleteItem = (key) => {
+        var array = [...this.state.todoList];
+        var index = array.indexOf(key.value);
+        array.forEach(() => {
+            array.splice(index, 1);
+        });
+        this.setState({todoList: array});
+    }
+
     render(){
         return (
             <View style={{flex: 1}}>
@@ -50,7 +69,7 @@ export default class Home extends React.Component{
                         renderItem={({item}) => this._renderCard(item)}
                         />
                 </View>
-                <FloatingActionButton />
+                <FloatingActionButton newToDoList={this._newToDoList}/>
             </View>
         );
     }

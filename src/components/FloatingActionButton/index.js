@@ -6,6 +6,7 @@ class FloatingActionButton extends Component {
     render() {
         return(
             <TouchableOpacity 
+                onPress={()=> this.props.newToDoList()}
                 style={styles.button}>
                 <Icon name="plus" size={20} color="#fff" />
             </TouchableOpacity>
