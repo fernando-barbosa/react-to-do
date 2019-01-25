@@ -8,7 +8,8 @@ class Card extends Component {
             <TouchableOpacity style={styles.card}
                 onPress={()=> this.props.goViewDetail(this.props.itemKey)}>
                 <Text>{this.props.title}</Text>
-                <TouchableOpacity>
+                <TouchableOpacity
+                    onPress={()=> this.props.deleteItem(this.props.itemKey)}>
                     <Icon name="trash" size={20} color="#777" /> 
                 </TouchableOpacity>
             </TouchableOpacity>

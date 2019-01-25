@@ -17,8 +17,8 @@ export default class Detail extends React.Component{
                 {
                     title: JSON.parse(value).title,
                     description: JSON.parse(value).description
-                })
-            );
+                }
+            ));
     }
 
     render(){

@@ -36,7 +36,12 @@ export default class Home extends React.Component{
 
     _renderCard = (item) => {
         return (
-            <Card title={item.title} itemKey={item.key} goViewDetail={this._goViewDetail}/>
+            <Card 
+                title={item.title} 
+                itemKey={item.key} 
+                goViewDetail={this._goViewDetail}
+                deleteItem={this._deleteItem}
+                />
         );
     }
 
@@ -66,6 +71,20 @@ export default class Home extends React.Component{
 
         return (<Text>Lista vazia</Text>);
     }
+    
+    _newToDoList = () => {
+        AsyncStorage.setItem('item', JSON.stringify(''));
+        this.props.navigation.navigate("Detail");
+    }
+
+    _deleteItem = (key) => {
+        var array = [...this.state.todoList];
+        var index = array.indexOf(key.value);
+        array.forEach(() => {
+            array.splice(index, 1);
+        });
+        this.setState({todoList: array});
+    }
 
     render(){
         return (
@@ -73,7 +92,7 @@ export default class Home extends React.Component{
                 <View>
                     {this._orderRender()}
                 </View>
-                <FloatingActionButton />
+                <FloatingActionButton newToDoList={this._newToDoList}/>
             </View>
         );
     }
