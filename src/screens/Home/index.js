@@ -21,6 +21,18 @@ export default class Home extends React.Component{
         }
     }
 
+    _updateTodoListStorage = () =>{
+        AsyncStorage.setItem('todoList', JSON.stringify(this.state.todoList));
+    }
+
+    componentWillMount(){
+        // AsyncStorage.getItem('todoList').then((value) => 
+        //     this.setState(
+        //         {
+        //             todoList: JSON.parse(value)
+        //         })
+        //     );
+    }
 
     _renderCard = (item) => {
         return (
@@ -40,15 +52,26 @@ export default class Home extends React.Component{
         this.props.navigation.navigate("Detail");
     }
 
+
+    _orderRender = () => {
+        if(this.state.todoList && this.state.todoList.length > 0){
+            return (
+                <FlatList 
+                style={styles.container}
+                data={this.state.todoList}
+                renderItem={({item}) => this._renderCard(item)}
+                />
+            );
+        }
+
+        return (<Text>Lista vazia</Text>);
+    }
+
     render(){
         return (
             <View style={{flex: 1}}>
                 <View>
-                    <FlatList 
-                        style={styles.container}
-                        data={this.state.todoList}
-                        renderItem={({item}) => this._renderCard(item)}
-                        />
+                    {this._orderRender()}
                 </View>
                 <FloatingActionButton />
             </View>
