@@ -14,7 +14,7 @@ export default class Detail extends React.Component{
                 <Text>Descrição</Text>
                 <TextInput
                     style={styles.inputDescriptionMargin}
-                    multiline='true'
+                    multiline={true}
                     onChangeText={(text) => this.setState({text})}
                     />
 

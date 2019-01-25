@@ -1,6 +1,11 @@
 import React from 'react';
+<<<<<<< HEAD
 import { View, Text, FlatList, StyleSheet, Button, TouchableHighlight } from "react-native";
+=======
+import { View, FlatList, StyleSheet } from "react-native";
+>>>>>>> feature/fab
 import Card from '../../components/Card';
+import FloatingActionButton from '../../components/FloatingActionButton';
 
 export default class Home extends React.Component{
 
